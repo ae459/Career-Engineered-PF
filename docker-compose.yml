@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: infrastructure_monitor_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: infrastructure_monitor
+      MYSQL_USER: monitor_user
+      MYSQL_PASSWORD: monitor_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docs/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    container_name: infrastructure_monitor_backend
+    environment:
+      DATABASE_URL: mysql+pymysql://monitor_user:monitor_pass@mysql/infrastructure_monitor
+      FLASK_ENV: development
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: infrastructure_monitor_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:5000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+
+volumes:
+  mysql_data:
