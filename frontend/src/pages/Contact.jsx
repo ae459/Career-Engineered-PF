@@ -172,9 +172,9 @@ const Contact = () => {
           <div className="contact-info">
             <h3>Other Ways to Reach Me</h3>
             <ul>
-              <li><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-              <li><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a></li>
-              <li><strong>GitHub:</strong> <a href="#" target="_blank" rel="noopener noreferrer">github.com/yourprofile</a></li>
+              <li><strong>Email:</strong> <a href="mailto:ae459@njit.edu">ae459@njit.edu</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aelmahalawy" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/aelmahalawy</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/ae459" target="_blank" rel="noopener noreferrer">github.com/ae459</a></li>
               <li><strong>Location:</strong> New Jersey (NJ)</li>
             </ul>
           </div>
